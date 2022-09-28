@@ -1,11 +1,11 @@
 import React from 'react'
-import { connect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { deleteUser } from '../../actions/users';
 
 const TableUser = (props) => {
   const {usersData, loading, success}=useSelector(state=>state.userReducers);
   const handleDelete=(id)=>{
-    props.deleteUser(id)
+    deleteUser(id)
   }
   return (
     <div>
@@ -32,8 +32,5 @@ const TableUser = (props) => {
     </div>
   )
 }
-const mapDispatchToProps={
-  deleteUser
-}
 
-export default connect(null, mapDispatchToProps)(TableUser)
+export default TableUser

@@ -11,7 +11,7 @@ const FormUser = (props) => {
     setUserInfor({...userInfor, [name]: value})
   }
   const handleSubmit=(e)=>{
-    dispatch(props.addUser(userInfor))
+    dispatch(addUser(userInfor))
   }
   console.log("userInfor", userInfor)
   return (
@@ -32,15 +32,5 @@ const FormUser = (props) => {
     </div>
   )
 }
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-      users: state.userReducers.usersData,
-      loading:  state.userReducers.loading
-  }
-}
-const mapDispatchToProps = {
- addUser
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormUser)
+export default FormUser
