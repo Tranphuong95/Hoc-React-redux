@@ -1,11 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser } from '../../actions/users';
 
 const TableUser = (props) => {
+  const dispatch=useDispatch();
   const {usersData, loading, success}=useSelector(state=>state.userReducers);
   const handleDelete=(id)=>{
-    deleteUser(id)
+    dispatch(deleteUser(id))
   }
   return (
     <div>
