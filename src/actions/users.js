@@ -1,6 +1,6 @@
 import * as TYPE from "./../contants";
 import { v4 as uuidv4 } from 'uuid';
-export const addUser=(data)=>(dispatch)=>{
+export const addUser=(data)=>async(dispatch)=>{
     dispatch({
         type: TYPE.ADD_USER
     })
@@ -18,7 +18,7 @@ export const addUser=(data)=>(dispatch)=>{
     })
 };
 
-export const deleteUser=(data)=>(dispatch)=>{
+export const deleteUser=(data)=>async(dispatch)=>{
     dispatch({
         type: TYPE.DELETE_USER
     })

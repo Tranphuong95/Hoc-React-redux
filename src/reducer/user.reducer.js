@@ -24,7 +24,6 @@ const UserReducers = (state = initialState, action) => {
       return { ...state, loading: true };
     case Type.DELETE_USER_SUCCESS:
       const newData=state.usersData.filter((f) => f.id !== action.payload)
-      console.log("newDataa", newData)
       return {
         ...state,
         loading: false,
