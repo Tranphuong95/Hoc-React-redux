@@ -14,17 +14,17 @@ const TableUser = (props) => {
       <table>
         <thead>
           <tr>
-            <th>Tên</th>
-            <th>Ngày sinh</th>
-            <th>giới tính</th>
+            <th>FirstName</th>
+            <th>Last Name</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
           {usersData.map((user, index)=>(
             <tr key={index}>
-              <td>{user.userName}</td>
-              <td>{user.date}</td>
-              <td>{user.gen===1?"nam": "nu"}</td>
+              <td>{user.first_name}</td>
+              <td>{user.last_name}</td>
+              <td>{user.email}</td>
               <td onClick={()=>handleDelete(user.id)} style={{cursor: "pointer"}}>Xoa</td>
             </tr>
           ))}
