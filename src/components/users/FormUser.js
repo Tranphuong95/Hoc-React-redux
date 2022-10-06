@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-import { connect, useDispatch } from 'react-redux';
-import { addUser} from '../../actions/users';
+import React, { useEffect, useState } from 'react'
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { addUser, updateUser} from '../../actions/users';
 
 const FormUser = (props) => {
   const [userInfor, setUserInfor]=useState({username: "", phone: ""});
+  const {user, success}=useSelector(state=>state.userReducers);
+  console.log("success", success)
+  useEffect(()=>{
+    if(success){
+      setUserInfor(user)
+    }
+  }, [success])
   const dispatch=useDispatch();
   const handleChange=(e)=>{
     // const {target: {name, value}}=e;
@@ -12,17 +19,21 @@ const FormUser = (props) => {
   }
   const handleSubmit=(e)=>{
     // dispatch(addUser(userInfor))
-    dispatch(addUser(userInfor))
+    if(props.isEdit){
+      dispatch(updateUser(userInfor))
+    }else{
+
+      dispatch(addUser(userInfor))
+    }
   }
-  console.log("userInfor", userInfor)
   return (
     <div>
-      <h3>Thêm users</h3>
+      <h3>{props.isEdit?"Cập nhật":"Thêm users"}</h3>
       <form >
         <label>Tên</label><br/>
-        <input name="username" value={userInfor.name} onChange={handleChange}/><br/>
+        <input name="username" value={userInfor.username} onChange={handleChange}/><br/>
         <label>Điện thoại</label><br/>
-        <input name="phone" value={userInfor.job} onChange={handleChange}/><br/>
+        <input name="phone" value={userInfor.phone} onChange={handleChange}/><br/>
         {/* <label>Giới</label><br/>
         <select name="gen" value={userInfor.gen} onChange={handleChange}>
           <option value={1}>Nam</option>

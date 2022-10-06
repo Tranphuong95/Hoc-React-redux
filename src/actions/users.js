@@ -52,3 +52,39 @@ export const deleteUser=(data)=>async(dispatch)=>{
         })
     })
 }
+//Lấy dữ liệu đổ vào form khi click vào nút sửa
+export  const getUser=(id)=>{
+    return({
+        type: TYPE.GET_USER,
+        payload: id
+    })
+};
+export  const getUserSuccess=(data)=>{
+    return ({
+        type: TYPE.GET_USER_SUCCESS,
+        payload: data
+    })
+};
+export  const getUserFail=(id)=>{
+    return({
+        type: TYPE.GET_USER_FAIL
+    })
+};
+
+export  const updateUser=(body)=>{
+    return({
+        type: TYPE.UPDATE_USER,
+        payload: body
+    })
+};
+export  const updateUserSuccess=(data)=>{
+    return ({
+        type: TYPE.UPDATE_USER_SUCCESS,
+        payload: {...data}
+    })
+};
+export  const updateUserFail=()=>{
+    return({
+        type: TYPE.UPDATE_USER_FAIL
+    })
+};
